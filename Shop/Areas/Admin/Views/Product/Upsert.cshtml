@@ -1,0 +1,55 @@
+﻿@model ProductVM
+
+<form method="post" class="row", enctype="multipart/form-data">
+    <div class=" border p-3 mt-4">
+        <div class=" row pb-2">
+            <h2 class="text-primary">@(Model.Product.Id != 0 ? "Оновити" : "Створити") товар</h2>
+        </div>
+        <div class="mb-3">
+            <label>Назва</label>
+            <input asp-for="Product.Title" class="form-control" />
+            <span asp-validation-for="Product.Title" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Опис</label>
+            <input asp-for="Product.Description" class="form-control" />
+            <span asp-validation-for="Product.Description" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Автор</label>
+            <input asp-for="Product.Author" class="form-control" />
+            <span asp-validation-for="Product.Author" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Ціна</label>
+            <input asp-for="Product.Price" class="form-control" />
+            <span asp-validation-for="Product.Price" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Категорія</label>
+            <select asp-for="@Model.Product.CategoryId" asp-items="@Model.ListItems" class="form-select">
+                <option disabled selected>--Оберіть категорію--</option>
+            </select>
+            @*<label asp-for="CategoryId" class="ms-2"></label>*@
+        </div>
+        <div class="form-floating py-2 col-12">
+            <input type="file" name="imageFile" class="form-control" />
+            <label asp-for="Product.ImgUrl" class="ms-2"></label>
+        </div>
+        <div class="row">
+            <div class=" col-6">
+                @if (Model.Product.Id != 0)
+                {
+                    <button type="submit" class="btn btn-primary form-control">Оновити</button>
+                }
+                else
+                {
+                    <button type="submit" class="btn btn-primary form-control">Створити</button>
+                }
+            </div>
+            <div class=" col-6">
+                <a asp-controller="Product" asp-action="Index" class="btn btn-secondary form-control"> Повернутися до списку </a>
+            </div>
+        </div>
+    </div>
+</form>

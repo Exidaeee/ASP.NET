@@ -1,0 +1,34 @@
+﻿@page
+@model ShopRazor_Temp.Pages.Categories.EditModel
+<form method="post">
+    <input asp-for="category.id" hidden />
+    <div class=" border p-3 mt-4">
+        <div class=" row pb-2">
+            <h2 class="text-primary">Edit Category</h2>
+        </div>
+        <div class="mb-3">
+            <label>Name</label>
+            <input asp-for="category.name" class="form-control" />
+            <span asp-validation-for="category.name" class="text-danger"></span>
+        </div>
+        <div class="mb-3">
+            <label>Display Order</label>
+            <input asp-for="category.DisplayOrder" class="form-control" />
+            <span asp-validation-for="category.DisplayOrder" class="text-danger"></span>
+        </div>
+        <div class="row">
+            <div class=" col-6">
+                <button type="submit" class="btn btn-primary from-control" style="width:150px">Update</button>
+            </div>
+            <div class=" col-6">
+                <a asp-page="/Category/Index"  class="btn btn-secondary" style="width:150px">Back to List </a>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
